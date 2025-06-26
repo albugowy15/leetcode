@@ -8,3 +8,5 @@ pub mod remove_duplicates;
 pub mod remove_duplicates_from_sorted_array_ii;
 pub mod remove_element;
 pub mod rotate_array;
+pub mod as_far_from_land_as_possible;
+pub mod subrectange_queries;
