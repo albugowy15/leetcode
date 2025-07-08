@@ -1,6 +1,6 @@
+use crate::solution::Solution;
 use std::cmp;
 
-struct Solution;
 // Problem: https://leetcode.com/problems/best-time-to-buy-and-sell-stock
 impl Solution {
     pub fn max_profit(prices: Vec<i32>) -> i32 {

@@ -1,4 +1,4 @@
-struct Solution;
+use crate::solution::Solution;
 // Problem: https://leetcode.com/problems/jump-game
 
 impl Solution {

@@ -1,4 +1,4 @@
-struct Solution;
+use crate::solution::Solution;
 // Problem: https://leetcode.com/problems/remove-element/?envType=study-plan-v2&envId=top-interview-150
 
 impl Solution {

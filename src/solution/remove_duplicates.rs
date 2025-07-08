@@ -1,4 +1,4 @@
-struct Solution;
+use crate::solution::Solution;
 // Problem: https://leetcode.com/problems/remove-duplicates-from-sorted-array
 
 impl Solution {

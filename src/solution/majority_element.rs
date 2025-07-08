@@ -1,28 +1,7 @@
-struct Solution;
+use crate::solution::Solution;
 // Problem: https://leetcode.com/problems/majority-element
 
 impl Solution {
-    // pub fn majority_element(nums: Vec<i32>) -> i32 {
-    //     let mut freq: HashMap<i32, i32> = HashMap::new();
-    //     let min_appearance: i32 = nums.len() as i32 / 2;
-    //     for num in nums {
-    //         match freq.get_mut(&num) {
-    //             Some(counter) => {
-    //                 *counter += 1;
-    //                 if *counter > min_appearance {
-    //                     return num;
-    //                 }
-    //             }
-    //             None => {
-    //                 freq.insert(num, 1);
-    //                 if 1 > min_appearance {
-    //                     return num;
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     -1
-    // }
     pub fn majority_element(nums: Vec<i32>) -> i32 {
         let (mut counter, mut res) = (0, 0);
         nums.iter().for_each(|num| {

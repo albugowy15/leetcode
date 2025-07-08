@@ -1,6 +1,6 @@
-use std::collections::VecDeque;
+use crate::solution::Solution;
 
-struct Solution;
+use std::collections::VecDeque;
 
 impl Solution {
     pub fn max_distance(grid: Vec<Vec<i32>>) -> i32 {
@@ -72,22 +72,18 @@ mod tests {
 
     #[test]
     fn test_max_distance() {
-        // Test case 1: Expected output 2
         let grid1 = vec![vec![1, 0, 1], vec![0, 0, 0], vec![1, 0, 1]];
         assert_eq!(Solution::max_distance(grid1.clone()), 2);
         assert_eq!(Solution::max_distance(grid1), 2);
 
-        // Test case 2: Expected output 4
         let grid2 = vec![vec![1, 0, 0], vec![0, 0, 0], vec![0, 0, 0]];
         assert_eq!(Solution::max_distance(grid2.clone()), 4);
         assert_eq!(Solution::max_distance(grid2), 4);
 
-        // Test case 3: All land, expected -1
         let grid3 = vec![vec![1, 1], vec![1, 1]];
         assert_eq!(Solution::max_distance(grid3.clone()), -1);
         assert_eq!(Solution::max_distance(grid3), -1);
 
-        // Test case 4: All water, expected -1
         let grid4 = vec![vec![0, 0], vec![0, 0]];
         assert_eq!(Solution::max_distance(grid4.clone()), -1);
         assert_eq!(Solution::max_distance(grid4), -1);

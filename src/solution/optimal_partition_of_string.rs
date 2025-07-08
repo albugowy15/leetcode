@@ -1,7 +1,7 @@
+use crate::solution::Solution;
 // Problem: https://leetcode.com/optimal-partition-of-string
 use std::collections::HashMap;
 
-struct Solution;
 
 impl Solution {
     pub fn partition_string(s: String) -> i32 {
