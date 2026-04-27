@@ -1,5 +1,55 @@
 pub struct Solution;
 
+// Definition for a binary tree node.
+use std::{cell::RefCell, collections::VecDeque, rc::Rc};
+#[derive(Debug, PartialEq, Eq)]
+pub struct TreeNode {
+    pub val: i32,
+    pub left: Option<Rc<RefCell<TreeNode>>>,
+    pub right: Option<Rc<RefCell<TreeNode>>>,
+}
+
+impl TreeNode {
+    #[inline]
+    pub fn new(val: i32) -> Self {
+        TreeNode {
+            val,
+            left: None,
+            right: None,
+        }
+    }
+
+    pub fn from_vec(data: Vec<Option<i32>>) -> Option<Rc<RefCell<TreeNode>>> {
+        if data.is_empty() || data[0].is_none() {
+            return None;
+        }
+
+        let root = Rc::new(RefCell::new(TreeNode::new(data[0].unwrap())));
+        let mut queue = VecDeque::new();
+        queue.push_back(root.clone());
+        let mut i = 1;
+        while i < data.len() {
+            let node = queue.pop_front().unwrap();
+            if let Some(val) = data[i] {
+                let left = Rc::new(RefCell::new(TreeNode::new(val)));
+                node.borrow_mut().left = Some(left.clone());
+                queue.push_back(left);
+            }
+            i += 1;
+            if i < data.len() {
+                if let Some(val) = data[i] {
+                    let right = Rc::new(RefCell::new(TreeNode::new(val)));
+                    node.borrow_mut().right = Some(right.clone());
+                    queue.push_back(right);
+                }
+                i += 1;
+            }
+        }
+
+        Some(root)
+    }
+}
+
 pub mod advantage_shuffle;
 pub mod angle_between_hands_of_a_clock;
 pub mod ant_on_the_boundary;
@@ -20,17 +70,21 @@ pub mod earliest_time_to_finish_one_task;
 pub mod find_all_lonely_numbers_in_the_array;
 pub mod find_numbers_with_even_number_of_digits;
 pub mod find_the_maximum_number_of_marked_indices;
+pub mod flatten_nested_list_iterator;
 pub mod greatest_common_divisor_of_strings;
 pub mod jump_game;
 pub mod longest_fibonacci_subarray;
 pub mod majority_element;
+pub mod make_array_zero_by_subtracting_equal_amounts;
 pub mod maximize_distance_to_closest_person;
 pub mod maximum_number_of_fish_in_a_grid;
+pub mod maximum_number_of_operations_to_move_ones_to_the_end;
 pub mod maximum_number_of_operations_with_the_same_score_i;
 pub mod merge_intervals;
 pub mod merge_sorted_array;
 pub mod minimum_consecutive_cards_to_pick_up;
 pub mod minimum_rectangles_to_cover_points;
+pub mod number_of_distinct_averages;
 pub mod number_of_employees_who_met_the_target;
 pub mod optimal_partition_of_string;
 pub mod partition_array_into_three_parts_with_equal_sum;
@@ -49,6 +103,7 @@ pub mod shifting_letters;
 pub mod shuffle_the_array;
 pub mod smallest_even_multiple;
 pub mod sorting_the_sentence;
+pub mod split_the_array;
 pub mod subrectange_queries;
 pub mod substring_matching_pattern;
 pub mod top_k_frequent_words;
@@ -56,4 +111,5 @@ pub mod two_sum;
 pub mod two_sum_iv_input_is_a_bst;
 pub mod uncrossed_lines;
 pub mod vowels_game_in_a_string;
+pub mod watering_plants;
 pub mod word_pattern;

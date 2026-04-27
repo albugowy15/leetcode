@@ -1,5 +1,4 @@
-use crate::solution::Solution;
-use crate::solution::second_minimum_node_in_a_binary_tree::TreeNode;
+use crate::solution::{Solution, TreeNode};
 
 use std::cell::RefCell;
 use std::collections::HashSet;

@@ -1,57 +1,6 @@
-// Definition for a binary tree node.
-use std::collections::VecDeque;
-#[derive(Debug, PartialEq, Eq)]
-pub struct TreeNode {
-    pub val: i32,
-    pub left: Option<Rc<RefCell<TreeNode>>>,
-    pub right: Option<Rc<RefCell<TreeNode>>>,
-}
-
-impl TreeNode {
-    #[inline]
-    pub fn new(val: i32) -> Self {
-        TreeNode {
-            val,
-            left: None,
-            right: None,
-        }
-    }
-
-    pub fn from_vec(data: Vec<Option<i32>>) -> Option<Rc<RefCell<TreeNode>>> {
-        if data.is_empty() || data[0].is_none() {
-            return None;
-        }
-
-        let root = Rc::new(RefCell::new(TreeNode::new(data[0].unwrap())));
-        let mut queue = VecDeque::new();
-        queue.push_back(root.clone());
-        let mut i = 1;
-        while i < data.len() {
-            let node = queue.pop_front().unwrap();
-            if let Some(val) = data[i] {
-                let left = Rc::new(RefCell::new(TreeNode::new(val)));
-                node.borrow_mut().left = Some(left.clone());
-                queue.push_back(left);
-            }
-            i += 1;
-            if i < data.len() {
-                if let Some(val) = data[i] {
-                    let right = Rc::new(RefCell::new(TreeNode::new(val)));
-                    node.borrow_mut().right = Some(right.clone());
-                    queue.push_back(right);
-                }
-                i += 1;
-            }
-        }
-
-        Some(root)
-    }
-}
-
+use crate::solution::{Solution, TreeNode};
 use std::cell::RefCell;
 use std::rc::Rc;
-
-use crate::solution::Solution;
 
 fn traverse(root: Option<Rc<RefCell<TreeNode>>>, smallest: i32, second_smallest: &mut i32) {
     match root {
